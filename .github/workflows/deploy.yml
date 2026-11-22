@@ -21,16 +21,29 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Detect project directory
+        id: detect
+        run: |
+          if [ -f "package.json" ]; then
+            echo "dir=." >> $GITHUB_OUTPUT
+          elif [ -f "MuzKlub/package.json" ]; then
+            echo "dir=MuzKlub" >> $GITHUB_OUTPUT
+          else
+            echo "Ошибка: package.json не найден" >&2
+            exit 1
+          fi
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        working-directory: ${{ steps.detect.outputs.dir }}
+        run: npm install
 
       - name: Build
+        working-directory: ${{ steps.detect.outputs.dir }}
         run: npm run build
 
       - name: Setup Pages
@@ -39,7 +52,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          path: '${{ steps.detect.outputs.dir }}/dist'
 
   deploy:
     environment:
