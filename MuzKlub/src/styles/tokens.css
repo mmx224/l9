@@ -1,0 +1,18 @@
+:root {
+  --blue: #2338d6;
+  --blue-deep: #16228f;
+  --sun: #ffd23f;
+  --sun-deep: #f0bd1a;
+  --paper: #ffffff;
+  --ink: #12172e;
+  --ink-soft: #5a6080;
+  --line: #dfe2f0;
+  --tint: #eef0fb;
+  --danger: #b3261e;
+
+  --font-display: 'Unbounded', 'Arial Black', Arial, sans-serif;
+  --font-body: 'Onest', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+
+  --radius: 14px;
+  --radius-sm: 9px;
+}

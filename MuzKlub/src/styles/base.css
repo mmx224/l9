@@ -1,0 +1,38 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--blue);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, p, dl, dd { margin: 0; }
+button, input, select, textarea { font: inherit; color: inherit; }
+fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
+
+:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 460px);
+  gap: 48px;
+  align-items: center;
+  max-width: 1040px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 32px 24px;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 800px) {
+  .layout { grid-template-columns: minmax(0, 1fr); gap: 24px; align-content: start; padding: 24px 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
